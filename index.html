@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORTNITE EVOLUTION - Fortnite Coaching</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --card-bg: #141419;
+            --gold-primary: #ffd700;
+            --gold-secondary: #d4af37;
+            --gold-glow: rgba(255, 215, 0, 0.35);
+            --text-light: #f5f5f7;
+            --text-muted: #a1a1a6;
+            --border-gold: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(180deg, rgba(20, 20, 25, 0.9) 0%, rgba(10, 10, 12, 1) 100%);
+            border-bottom: 1px solid var(--border-gold);
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            box-shadow: 0 0 15px var(--gold-primary);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #fff 30%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 10px 35px var(--gold-glow);
+        }
+
+        h2 {
+            color: var(--gold-primary);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p {
+            color: var(--text-muted);
+        }
+
+        /* INPUTS & SELECTS */
+        .input-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.9rem;
+            color: var(--gold-secondary);
+            font-weight: 600;
+        }
+
+        input, select {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-gold);
+            background-color: rgba(10, 10, 12, 0.8);
+            color: var(--text-light);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        /* BOTÕES INTERATIVOS COM ANIMAÇÃO */
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--gold-glow);
+        }
+
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn-gold:hover::before {
+            left: 100%;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-gold:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* ROTINA DE TREINO - GRID COM FOTOS */
+        .routine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .routine-card {
+            background: #0d0d11;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .routine-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-gold);
+        }
+
+        .routine-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--gold-secondary);
+        }
+
+        .routine-content {
+            padding: 1.5rem;
+        }
+
+        .routine-content h3 {
+            color: var(--gold-primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: var(--gold-primary);
+            font-size: 0.8rem;
+        }
+
+        /* ANIMAÇÃO DE REVELAÇÃO */
+        .hidden {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .fade-in {
+            display: block;
+            animation: fadeIn 0.6s forwards ease-out;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        a {
+            color: var(--gold-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Fortnite Evolution Hub</h1>
+        <p>Acelere sua evolução no jogo com treinamento baseado em dados</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Passo 1: Perfil do Fortnite Tracker -->
+        <div class="card">
+            <h2><span>🔗</span> 1. Conectar Fortnite Tracker</h2>
+            <p>Insira o link do seu perfil no Tracker para validar e visualizar suas estatísticas em tempo real:</p>
+            
+            <div class="input-group" style="grid-template-columns: 1fr auto; align-items: end;">
+                <div class="field">
+                    <label>URL do Perfil:</label>
+                    <input type="url" id="trackerUrl" placeholder="Ex: https://fortnitetracker.com/profile/all/SeuNick">
+                </div>
+                <button class="btn-gold" onclick="openTracker()">Abrir Perfil</button>
+            </div>
+            <small style="margin-top: 10px; display: block; color: var(--text-muted);">
+                Não sabe seu link? Acesse <a href="https://fortnitetracker.com" target="_blank">fortnitetracker.com</a> e pesquise seu Nick.
+            </small>
+        </div>
+
+        <!-- Passo 2: Formulário de Estatísticas -->
+        <div class="card">
+            <h2><span>📊</span> 2. Diagnóstico de Performance</h2>
+            <p>Preencha seus dados atuais extraídos do Tracker para calcularmos seu plano de treino personalizado:</p>
+            
+            <form id="statsForm" onsubmit="generateRoutine(event)">
+                <div class="input-group">
+                    <div class="field">
+                        <label>K/D Ratio Geral:</label>
+                        <input type="number" id="kdRatio" step="0.01" placeholder="Ex: 1.85" required>
+                    </div>
+                    <div class="field">
+                        <label>Taxa de Vitória (%):</label>
+                        <input type="number" id="winRate" step="0.1" placeholder="Ex: 6.5" required>
+                    </div>
+                    <div class="field">
+                        <label>Maior Dificuldade Atual:</label>
+                        <select id="mainWeakness" required>
+                            <option value="aim">Mira e Controle de Recuo</option>
+                            <option value="build">Construção / Piece Control</option>
+                            <option value="gameSense">Noção de Jogo / Posicionamento</option>
+                            <option value="clutch">Tomada de Decisão em Finais (Endgame)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-gold" style="width: 100%; margin-top: 2rem; padding: 1.2rem;">
+                    🚀 Gerar Minha Rotina Dourada
+                </button>
+            </form>
+        </div>
+
+        <!-- Passo 3: Rotina Gerada com Fotos -->
+        <div id="routineResult" class="card hidden">
+            <h2><span>🏆</span> 3. Sua Rotina de Treino Personalizada</h2>
+            <p id="routineOverview" style="font-size: 1.1rem; color: #fff; margin-bottom: 1.5rem;"></p>
+
+            <div class="routine-grid">
+                
+                <!-- Card 1: Aquecimento -->
+                <div class="routine-card">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="Aquecimento de Mira" class="routine-img">
+                    <div class="routine-content">
+                        <h3>1. Aquecimento (15 min)</h3>
+                        <ul id="warmupList"></ul>
+                    </div>
+                </div>
+
+                <!-- Card 2: Treino Focado -->
+                <div class="routine-card">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80" alt="Treino Específico" class="routine-img">
+                    <div class="routine-content">
+                        <h3>2. Treino Específico (30 min)</h3>
+                        <ul id="focusList"></ul>
+                    </div>
+                </div>
+
+                <!-- Card 3: Prática em Jogo -->
+                <div class="routine-card">
+                    <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=600&q=80" alt="Prática em Jogo" class="routine-img">
+                    <div class="routine-content">
+                        <h3>3. Aplicação em Partida (60 min)</h3>
+                        <ul id="inGameList"></ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openTracker() {
+            const url = document.getElementById('trackerUrl').value;
+            if (url && url.includes('fortnitetracker.com')) {
+                window.open(url, '_blank');
+            } else {
+                alert('Por favor, insira uma URL válida do Fortnite Tracker (Ex: https://fortnitetracker.com/profile/all/SeuNick).');
+            }
+        }
+
+        function generateRoutine(event) {
+            event.preventDefault();
+
+            const kd = parseFloat(document.getElementById('kdRatio').value);
+            const winRate = parseFloat(document.getElementById('winRate').value);
+            const weakness = document.getElementById('mainWeakness').value;
+
+            const overview = document.getElementById('routineOverview');
+            const warmup = document.getElementById('warmupList');
+            const focus = document.getElementById('focusList');
+            const inGame = document.getElementById('inGameList');
+
+            // Limpa conteúdos anteriores
+            warmup.innerHTML = '';
+            focus.innerHTML = '';
+            inGame.innerHTML = '';
+
+            // Análise básica
+            let analysisText = `Com base no seu K/D de <strong style="color: var(--gold-primary);">${kd}</strong> e Taxa de Vitória de <strong style="color: var(--gold-primary);">${winRate}%</strong>: `;
+
+            if (kd < 1.5) {
+                analysisText += "Sua prioridade imediata é aumentar a eficiência em combates diretos e evitar eliminações pré-maturas.";
+            } else {
+                analysisText += "Você já possui boa mecânica base. O foco agora é dominar o controle de espaço e maximizar suas vitórias no endgame.";
+            }
+
+            overview.innerHTML = analysisText;
+
+            // 1. Aquecimento
+            warmup.innerHTML = `
+                <li>5 min: Tile Frenzy / Tracking em mapas de Aim Trainer.</li>
+                <li>10 min: Free Building consciente para soltar a mecânica dos dedos.</li>
+            `;
+
+            // 2. Treino Específico (Conforme fraqueza)
+            if (weakness === 'aim') {
+                focus.innerHTML = `
+                    <li>15 min: Mapas de Aim Duels 1v1 (Prática de mira sob pressão).</li>
+                    <li>15 min: Crosshair Placement e treinos de tiros de Escopeta com cover.</li>
+                `;
+            } else if (weakness === 'build') {
+                focus.innerHTML = `
+                    <li>15 min: Mapas de Piece Control (ex: Raider's Piece Control Map).</li>
+                    <li>15 min: Treino de Boxfight 1v1 focando em peeks sem tomar dano.</li>
+                `;
+            } else if (weakness === 'gameSense') {
+                focus.innerHTML = `
+                    <li>15 min: Análise de Replays (Identifique 2 erros que custaram sua vida).</li>
+                    <li>15 min: Treino de rotações e leitura de safe zone em Realistic 1v1s.</li>
+                `;
+            } else if (weakness === 'clutch') {
+                focus.innerHTML = `
+                    <li>20 min: Simulações de Zone Wars (Endgame sob alta pressão).</li>
+                    <li>10 min: Gerenciamento de materiais e itens de mobilidade sob escassez.</li>
+                `;
+            }
+
+            // 3. Aplicação em Jogo
+            if (winRate < 4.0) {
+                inGame.innerHTML = `
+                    <li>Caia em locais de densidade média (Mid-drop) para garantir bom loot.</li>
+                    <li>Evite rotas de combate desnecessárias no Mid-game.</li>
+                    <li>Priorize chegar cedo à Safe Zone e garanta o High Ground.</li>
+                `;
+            } else {
+                inGame.innerHTML = `
+                    <li>Jogue partidas Ranqueadas focando em eliminações no Mid-game.</li>
+                    <li>Treine roubo de parede (Wall replacement) sob ritmo acelerado.</li>
+                    <li>Mantenha controle total do inventário focado em cura rápida e mobilidade.</li>
+                `;
+            }
+
+            // Exibir a secao com animacao
+            const resultCard = document.getElementById('routineResult');
+            resultCard.classList.remove('hidden');
+            resultCard.classList.add('fade-in');
+            
+            // Rolar a tela suavemente
+            resultCard.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
